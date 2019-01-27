@@ -39,12 +39,13 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/syndtr/goleveldb/leveldb/storage"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
 	"sync"
+
+	"github.com/syndtr/goleveldb/leveldb/storage"
 )
 
 const additionalDataLen = 1 + binary.MaxVarintLen64 // Length of an int64 plus one byte for type
@@ -79,6 +80,9 @@ func OpenEncryptedFile(path string, key []byte, readOnly bool) (storage.Storage,
 	}
 
 	cyp, err := cipher.NewGCM(ace)
+	if err != nil {
+		return nil, err
+	}
 
 	if fi, err := os.Stat(path); err == nil {
 		if !fi.IsDir() {
