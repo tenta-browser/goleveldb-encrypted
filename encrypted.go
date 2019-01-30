@@ -23,10 +23,11 @@
 package goleveldb_encrypted
 
 import (
-	"github.com/jwriteclub/goleveldb-encrypted/aesgcm"
+	"io"
+
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/opt"
-	"io"
+	"github.com/tenta-browser/goleveldb-encrypted/aesgcm"
 )
 
 type EncryptedDB struct {
