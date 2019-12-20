@@ -10,7 +10,7 @@
 
 // +build nacl
 
-package storage
+package aesgcm
 
 import (
 	"os"
