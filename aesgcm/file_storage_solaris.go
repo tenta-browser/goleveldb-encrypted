@@ -10,7 +10,7 @@
 
 // +build solaris
 
-package storage
+package aesgcm
 
 import (
 	"os"
